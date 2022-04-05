@@ -17,9 +17,14 @@ b)  SELECT `name`,`surname`
   FROM `courses` 
   WHERE `cfu` > 10;
 
-3) Selezionare tutti gli studenti che hanno più di 30 anni
+3) Selezionare tutti gli studenti che hanno più di 30 anni(3381)
 
 a)  SELECT `name`, `surname`,`date_of_birth`
     FROM `students` 
-    WHERE (YEAR(CURRENT_DATE()) - YEAR(`date_of_birth`)) >= 30;    
+    WHERE DATE_ADD(`date_of_birth`, INTERVAL 30 YEAR) <= CURRENT_DATE();   
+
+b)  POCO PRECISA
+    SELECT `name`, `surname`,`date_of_birth`
+    FROM `students` 
+    WHERE (YEAR(CURRENT_DATE()) - YEAR(`date_of_birth`)) >= 30; 
 
