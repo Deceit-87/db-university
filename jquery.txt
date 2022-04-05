@@ -1,0 +1,17 @@
+
+
+1) Selezionare tutti gli studenti nati nel 1990 (160)
+
+a)  SELECT `name`,`surname`
+    FROM `students`
+    WHERE YEAR(`date_of_birth`) = 1990;
+
+b)  SELECT `name`,`surname`
+    FROM `students` 
+    WHERE `date_of_birth` LIKE '1990%';
+
+
+2)
+
+
+
