@@ -28,7 +28,7 @@
 
     a)  SELECT `name`, `surname`,`date_of_birth`
         FROM `students` 
-        WHERE DATE_ADD(`date_of_birth`, INTERVAL 30 YEAR) <= CURRENT_DATE();   
+        WHERE DATE_ADD(`date_of_birth`, INTERVAL 30 YEAR) < CURRENT_DATE();   
         
         alternativa DATE_SUB
 
@@ -36,6 +36,12 @@
         SELECT `name`, `surname`,`date_of_birth`
         FROM `students` 
         WHERE (YEAR(CURRENT_DATE()) - YEAR(`date_of_birth`)) >= 30; 
+
+            RISPOSTA C) in classe
+
+    c) SELECT `name`, TIMESTAMPDIFF(YEAR,`date_of_birth`,CURDATE() ) AS `anni`
+        FROM `students`
+        WHERE TIMESTAMPDIFF( YEAR,`date_of_birth`, curdate() ) > 30;
 
 
 -----------------------------------------------------------------------------
