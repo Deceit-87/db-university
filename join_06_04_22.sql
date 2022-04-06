@@ -2,8 +2,7 @@
 
     SELECT `degrees`.`name`,`students`.`name`,`students`.`surname
     FROM `degrees`
-    INNER JOIN `students`
-    ON `students`.`degree_id` = `degrees`.`id`
+    INNER JOIN `students` ON `students`.`degree_id` = `degrees`.`id`
     WHERE `degrees`.`name` = 'corso di laurea in economia';
 
 
@@ -14,8 +13,7 @@
 
     SELECT `degrees`.`name`
     FROM `degrees`
-    INNER JOIN `departments`
-    ON `degrees`.`department_id` = `departments`.`id`
+    INNER JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
     WHERE `departments`.`name`= 'Dipartimento di Neuroscienze';
 
 
@@ -27,10 +25,8 @@
 
     SELECT `courses`.`name`
     FROM `courses`
-    INNER JOIN `course_teacher`
-    ON `course_teacher`.`course_id` = `courses`.`id`
-    INNER JOIN `teachers`
-    ON `teachers`.`id` = `course_teacher`.`teacher_id`
+    INNER JOIN `course_teacher` ON `course_teacher`.`course_id` = `courses`.`id`
+    INNER JOIN `teachers` ON `teachers`.`id` = `course_teacher`.`teacher_id`
     WHERE `teachers`.`id` = 44;
 
 
@@ -44,10 +40,8 @@
 
     SELECT `students`.`surname`,`students`.`name`,`degrees`.*,`departments`.`name`
     FROM `students`
-    INNER JOIN `degrees`
-    ON `degrees`.`id` = `students`.`degree_id`
-    INNER JOIN `departments`
-    ON `departments`.`id` = `degrees`.`department_id`
+    INNER JOIN `degrees` ON `degrees`.`id` = `students`.`degree_id`
+    INNER JOIN `departments` ON `departments`.`id` = `degrees`.`department_id`
     ORDER  BY `students`.`surname` ,`students`.`name` ASC;
 
 
@@ -55,6 +49,13 @@
 
 
 -- 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+    SELECT `degrees`.`name`,`courses`.`name`,`teachers`.`surname`,`teachers`.`name`
+    FROM `degrees`
+    INNER JOIN `courses` ON `courses`.`degree_id`= `degrees`.`id`
+    INNER JOIN `course_teacher` ON `course_teacher`.`course_id`=`courses`.`id`
+    INNER JOIN `teachers` ON `teachers`.`id`= `course_teacher`.`teacher_id`
+    ORDER BY `degrees`.`name`,`teachers`.`surname`,`teachers`.`name`ASC
 
 
 ---------------------------------------------------------------------------------------------------
